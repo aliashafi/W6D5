@@ -1,0 +1,17 @@
+<table>
+<thead> 
+    <tr>
+        <th colspans="1">All The Cats in the World</th>
+    </tr>
+</thead>
+<tbody>
+<% @kitties.each do |kitten|%>
+    <tr>
+        <td> 
+            <%= render 'cat', kitty: kitten%>
+        </td>
+    </tr>
+<% end %>
+</tbody>
+</table> 
+
