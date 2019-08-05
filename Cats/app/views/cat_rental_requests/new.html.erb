@@ -1,14 +1,21 @@
 <h1>Request a Cat</h1>
-<form action="<%=cat_rental_requests_url(@kitty)%>" method="post">
-    <label for="cat_id" type="text">Cat ID:</label>
-    <input type="text" id=" cat_id" name="@kitty[cat_id]" value="<%= @kitty.cat_id %>">
+<form action="<%=cat_rental_requests_url%>" method="post">
+    
+    <select name="kitty[cat_id]" id="cat">
+        <option disabled selected>--Please Select--</option>
+        <% CatRentalRequest.all.each do |req| %>
+        <option value="<%=req.cat.id%>"><%= req.cat.name %></option>
+        <% end %>
+    </select>
+
     <br>
     <label for="start_date" type="text">Start Date:</label>
-    <input type="date" id="start_date" name="@kitty[start_date]" value="<%= @kitty.start_date %>">
+    <input type="date" id="start_date" name="kitty[start_date]" value="<%= @kitty.start_date %>">
     <br>
     <label for="end_date" type="text">End Date:</label>
-    <input type="date" id="end_date" name="@kitty[end_date]" value="<%= @kitty.end_date %>">
+    <input type="date" id="end_date" name="kitty[end_date]" value="<%= @kitty.end_date %>">
     <br>
+    <input type="hidden" name="kitty[status]" id="status" value="<%= "PENDING" %>">
     <input type="submit" value="Request" >
     <br>
 </form>

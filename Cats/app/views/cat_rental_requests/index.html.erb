@@ -1,0 +1,22 @@
+<table>
+<thead> 
+    <tr>
+        <th colspans="1">All The Cats in the World</th>
+    </tr>
+</thead>
+<tbody>
+
+<% @kitty.each do |kitten|%>
+    <tr>
+        <td> 
+            <%= Cat.where(id: kitten.cat_id).first.name %>
+            <%= kitten.start_date%>
+            <%= kitten.end_date%>
+            <%= kitten.status%>
+            <%= button_to "Approve Cat", { action: "approve", id: kitten.id }, method: :approve, data: { confirm: "Are you sure?" } %>
+        </td>
+        
+    </tr>
+<% end %>
+</tbody>
+</table> 

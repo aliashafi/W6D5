@@ -1,5 +1,9 @@
 class CatRentalRequestsController < ApplicationController
 
+    def index
+        @kitty = CatRentalRequest.all
+        render :index
+    end
     def new
         @kitty = CatRentalRequest.new
         render :new
@@ -13,6 +17,15 @@ class CatRentalRequestsController < ApplicationController
     def edit
         @kitty = CatRentalRequest.find(params[:id])
         render :edit
+    end
+
+    def approve
+        @kitty = CatRentalRequest.find(params[:id])
+        if @kitty.update(status: 'APPROVED')
+            redirect_to cat_rental_requests_url
+        else
+            render :show
+        end
     end
 
     def new
@@ -41,7 +54,7 @@ class CatRentalRequestsController < ApplicationController
     private
 
     def cat_rental_request_params
-        params.require(:kitty).permit(:start_date, :end_date, :cat_id, :status)
+        params.require(:kitty).permit(:cat_id, :start_date, :end_date, :status)
     end
 
 end
