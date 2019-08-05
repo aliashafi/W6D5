@@ -21,9 +21,10 @@
 <label for="birth_date" type="text">Birthday:</label>
 <input type="date" id="birth_date" name="kitty[birth_date]" value="<%= kitty.birth_date %>">
 <br>
-<label for="sex" type="text">Sex:</label>
-<input type="radio" id="sex" name="kitty[sex]" value="M">Male<br>
-<input type="radio" id="sex" name="kitty[sex]" value="F">Female<br>
+<label for="sex" type="text">Sex:
+<input type="radio" id="sex" name="kitty[sex]" value="M" <%= "checked" if kitty.sex == 'M'%>>Male <br> 
+<input type="radio" id="sex" name="kitty[sex]" value="F" <%= "checked" if kitty.sex == 'F'%> >Female <br> 
+</label>
 <br>
 <label for="description" type="text">Description:</label>
 <textarea name="kitty[description]" id="" cols="30" rows="10"><%= kitty.description %></textarea>
